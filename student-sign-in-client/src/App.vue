@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
 import NewStudentForm from "./components/NewStudentForm.vue";
 import StudentMessage from "./components/StudentMessage.vue";
 import StudentTable from "./components/StudentTable.vue";
@@ -30,20 +29,26 @@ export default {
     };
   },
   mounted() {
-    this.updateStudents()
+    this.updateStudents();
   },
   methods: {
-    updateStudents(){
-      this.$student_api.getAllStudents().then(students => {
-        this.students = students
-      })
+    updateStudents() {
+      this.$student_api.getAllStudents().then((students) => {
+        this.students = students;
+      });
     },
     newStudentAdded(student) {
-      this.$student_api.addStudents(student).then(()=>{
+      this.$student_api.addStudents(student).then(() => {
+        this.updateStudents();
+      });
+    },
+    studentArrivedOrLeft(student, present) {
+      student.present = present
+      this.$student_api.updateStudent(student).then( () => {
+        this.mostRecentStudent = student
         this.updateStudents()
       })
     },
-    studentArrivedOrLeft(student, present) {},
     studentDelete(student) {},
   },
 };
