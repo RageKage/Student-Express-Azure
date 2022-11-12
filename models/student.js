@@ -1,3 +1,4 @@
+// this is the records inside the database
 module.exports = (sequelize, DataTypes) => {
   let Student = sequelize.define("Student", {
     name: {
@@ -11,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   })
 
-  Student.sync( { force: true } ).then ( () => {
+  Student.sync( { force: false } ).then ( () => {
     console.log('synced student table')
   })
 

@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
 import NewStudentForm from "./components/NewStudentForm.vue";
 import StudentMessage from "./components/StudentMessage.vue";
 import StudentTable from "./components/StudentTable.vue";
@@ -28,38 +29,22 @@ export default {
       mostRecentStudents: {},
     };
   },
+  mounted() {
+    this.updateStudents()
+  },
   methods: {
+    updateStudents(){
+      this.$student_api.getAllStudents().then(students => {
+        this.students = students
+      })
+    },
     newStudentAdded(student) {
-      this.students.push(student);
-
-      this.students.sort(function (s1, s2) {
-        return s1.name.toUpperCase() < s2.name.toUpperCase() ? -1 : 1;
-      });
+      this.$student_api.addStudents(student).then(()=>{
+        this.updateStudents()
+      })
     },
-    studentArrivedOrLeft(student, present) {
-      // find the student in array of students
-      // update the present Attribute
-
-      let updateStudent = this.students.find(function (s) {
-        if (s.name === student.name && s.starID === student.starID) {
-          return true;
-        }
-      });
-      if (updateStudent) {
-        updateStudent.present = present;
-        this.mostRecentStudents = updateStudent;
-        console.log(updateStudent);
-      }
-    },
-    studentDelete(student) {
-      // returns
-      this.students = this.students.filter(function (s) {
-        if (s != student) {
-          return true;
-        }
-      });
-      this.mostRecentStudents = ''
-    },
+    studentArrivedOrLeft(student, present) {},
+    studentDelete(student) {},
   },
 };
 </script>

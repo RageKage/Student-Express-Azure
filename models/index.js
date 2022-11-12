@@ -16,7 +16,7 @@ let password = process.env.DB_PASSWORD
 
 config.password = password
 
-
+// this is the database
 let db = {}
 
 let sequelize = new Sequelize(config)

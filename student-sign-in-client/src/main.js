@@ -1,5 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import StudentService from "@/services/StudentService.js";
 
+let app = createApp(App);
 
-createApp(App).mount('#app')
+app.config.globalProperties.$student_api = StudentService;
+
+app.mount("#app");
