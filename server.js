@@ -7,7 +7,7 @@ let app = express();
 let vueClientPath = path.join(__dirname, 'student-sign-in-client', 'docs')
 
 app.use(express.static(vueClientPath))
-
+// hi
 // handle the JSON requests and convert it into js
 app.use(express.json());
 
