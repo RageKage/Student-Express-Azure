@@ -44,13 +44,14 @@ export default {
       .catch(err => {
         let msg = err.response.data.join(',')
         // console.log(`Error Adding Student ${msg}`)
-        alert(`Error Adding Student ${msg}`)
+        alert(`Error Adding Student, make sure starID is unique`)
       })
     },
     studentArrivedOrLeft(student, present) {
       student.present = present
+      // console.log(student.present)
       this.$student_api.updateStudent(student).then( () => {
-        this.mostRecentStudent = student
+        this.mostRecentStudents = student
         this.updateStudents()
       }).catch(() => { alert( "Unable to Update student")})
     },

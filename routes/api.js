@@ -10,7 +10,7 @@ let router = express.Router();
 
 // this will find finds
 router.get("/students", function (req, res, next) {
-  Student.findAll({ order: ["present", "name", db.Sequelize.fn('Lower', db.Sequelize.col('name'))] })
+  Student.findAll({ order: ["present", "starID", db.Sequelize.fn('Lower', db.Sequelize.col('name'))] })
     .then((students) => {
       return res.json(students);
     })

@@ -24,5 +24,5 @@ export default {
     return axios.delete(`${base_url}/${id}`).then( res => {
       return res.data;
     });
-  }
+  },
 };

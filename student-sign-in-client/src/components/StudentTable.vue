@@ -4,10 +4,14 @@
       <h4 class="card-title">Student List</h4>
 
       <div class="edit-table-toggle form-check">
-        <input type="checkbox" class="form-check-input" id="edit-table" v-model="editTable">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="edit-table"
+          v-model="editTable"
+        />
         <label for="edit-table">Edit Table</label>
       </div>
-
 
       <div id="student-table">
         <table class="table">
@@ -15,7 +19,7 @@
             <th>Name</th>
             <th>StarID</th>
             <th>Present?</th>
-            <th v-show = "editTable">Delete</th>
+            <th v-show="editTable">Delete</th>
           </tr>
           <br />
           <student-row
@@ -25,7 +29,6 @@
             v-bind:edit="editTable"
             v-on:student-arrived-or-left="arrivedOrLeft"
             v-on:delete-student="deleteStudent"
-            
           >
           </student-row>
         </table>
@@ -39,17 +42,17 @@ import StudentRow from "@/components/StudentRow.vue";
 
 export default {
   name: "StudentTable",
-  emits: ["student-arrived-or-left", "delete-student"],
+  emits: ["student-arrived-or-left", "delete-student", "delete-all-student"],
   components: {
     StudentRow,
   },
   props: {
     students: Array,
-  }, 
-  data(){
+  },
+  data() {
     return {
-      editTable: false
-    }
+      editTable: false,
+    };
   },
   methods: {
     arrivedOrLeft(student, present) {
@@ -57,10 +60,10 @@ export default {
       this.$emit("student-arrived-or-left", student, present);
     },
     deleteStudent(student) {
+      // console.log(students);
       this.$emit("delete-student", student);
     },
-    
-  }
+  },
 };
 </script>
 

@@ -4,7 +4,7 @@ let path = require('path')
 
 let app = express();
 
-let vueClientPath = path.join(__dirname, 'student-sign-in-client', 'docs')
+let vueClientPath = path.join(__dirname, 'student-sign-in-client', 'dist')
 
 app.use(express.static(vueClientPath))
 

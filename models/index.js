@@ -2,7 +2,7 @@ let { Sequelize, DataTypes } = require("sequelize");
 
 let env = process.env.NODE_ENV || "development";
 
-console.log("using env", +env);
+console.log("using env " + env);
 
 // let configFile = require(__dirname, + '/../config.json')[env]
 

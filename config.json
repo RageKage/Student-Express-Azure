@@ -4,10 +4,10 @@
     "dialect": "sqlite"
   },
   "production": {
-    "username": "YOUR_USERNAME",
+    "username": "niman",
     "password": "YOUR_PASSWORD!",
-    "host": "YOUR_DATABASE_SERVER.database.windows.net",
-    "database": "YOUR_DATABASE",
+    "host": "student-sign-in-database-server-niman.database.windows.net",
+    "database": "student-sign-in-database",
     "dialect": "mssql",
     "ssl": true,
     "dialectOptions": {
